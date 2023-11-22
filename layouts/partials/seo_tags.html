@@ -1,8 +1,7 @@
 <!-- Primary Meta Tags -->
 <meta name="title" content="{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}" />
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-<meta name="keywords" content="{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}" />
-
+<meta name="description" content="{{ if .IsPage }}{{ .Summary | truncate 130 }} {{ else }}{{ with .Description }}{{ . }}{{ end }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+<meta name="keywords" content="{{ if .IsPage }}{{ range $index, $tag := .Params.tags }}{{ if $index }},{{ end }}{{ $tag }}{{ end }}{{ else }}印记,yinji.org,今是昨非,胡鹤仙,胡言胡语,个人博客,胡鹤仙的个人博客,青山绿水,胡和先,小胡同学的个人博客,小胡同学,blog{{ end }}">
 <!-- Open Graph / Facebook -->
 {{ template "_internal/opengraph.html" . }}
 
